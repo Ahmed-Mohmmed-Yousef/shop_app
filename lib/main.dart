@@ -1,6 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shop_app/shared/bloc_observer.dart';
+import 'package:shop_app/shared/cubits/app/app_cubit.dart';
+import 'package:shop_app/shared/network/local/cach_helper.dart';
+import 'package:shop_app/shared/network/remote/dio_helper.dart';
+import 'package:shop_app/shared/styles/themes.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await CachHelper.init();
+  DioHelper.init();
+  BlocOverrides.runZoned(
+    () {},
+    blocObserver: MyBlocObserver(),
+  );
   runApp(const MyApp());
 }
 
@@ -10,21 +23,24 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+    return BlocProvider(
+      create: (context) => AppCubit(),
+      child: BlocConsumer<AppCubit, AppState>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          AppCubit cubit = AppCubit.get(context);
+          return MaterialApp(
+            title: 'Flutter Demo',
+            theme: Themes.lightTheme,
+            darkTheme: Themes.darkTheme,
+            themeMode: cubit.isLightMode ? ThemeMode.light : ThemeMode.dark,
+            home: Directionality(
+              textDirection: cubit.isRtl ? TextDirection.rtl : TextDirection.ltr,
+              child: Container(),
+            ),
+          );
+        },
       ),
-      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
