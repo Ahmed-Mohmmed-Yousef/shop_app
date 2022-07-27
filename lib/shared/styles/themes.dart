@@ -4,11 +4,11 @@ import 'package:hexcolor/hexcolor.dart';
 class Themes {
   static ThemeData lightTheme = ThemeData(
               secondaryHeaderColor: Colors.grey,
-              primarySwatch: Colors.deepOrange,
-              floatingActionButtonTheme: const FloatingActionButtonThemeData(
-                backgroundColor: Colors.deepOrange,
-                elevation: 0.0,
-              ),
+              primarySwatch: Colors.blue,
+              // floatingActionButtonTheme: const FloatingActionButtonThemeData(
+              //   backgroundColor: Colors.deepOrange,
+              //   elevation: 0.0,
+              // ),
               scaffoldBackgroundColor: Colors.white,
               appBarTheme: const AppBarTheme(
                 iconTheme: IconThemeData(color: Colors.deepOrange),
@@ -45,11 +45,11 @@ class Themes {
 
   static ThemeData darkTheme = ThemeData(
               secondaryHeaderColor: Colors.grey,
-              primarySwatch: Colors.deepOrange,
-              floatingActionButtonTheme: const FloatingActionButtonThemeData(
-                backgroundColor: Colors.deepOrange,
-                elevation: 0.0,
-              ),
+              primarySwatch: Colors.blue,
+              // floatingActionButtonTheme: const FloatingActionButtonThemeData(
+              //   backgroundColor: Colors.deepOrange,
+              //   elevation: 0.0,
+              // ),
               scaffoldBackgroundColor: HexColor('333739'),
               appBarTheme: AppBarTheme(
                 iconTheme: const IconThemeData(color: Colors.deepOrange),

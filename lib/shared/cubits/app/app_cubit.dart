@@ -10,17 +10,17 @@ class AppCubit extends Cubit<AppState> {
 
   static AppCubit get(BuildContext context) => BlocProvider.of(context);
 
-  bool get isLightMode => CachHelper.getData(key: 'isLightMode');
+  bool get isLightMode => CachHelper.getBool(key: CachKey.isLightMod);
 
   set isLightMode(bool isLightMode) {
-    CachHelper.putData(key: 'isLightMode', value: isLightMode)
+    CachHelper.putBool(key: CachKey.isLightMod, value: isLightMode)
         .then((value) => emit(AppThemeChanded()));
   }
 
-  bool get isRtl => CachHelper.getData(key: 'isRtl');
+  bool get isRtl => CachHelper.getBool(key: CachKey.isRtl);
 
   set isRtl(bool isRtl) {
-    CachHelper.putData(key: 'isRtl', value: isLightMode)
+    CachHelper.putBool(key: CachKey.isRtl, value: isLightMode)
         .then((value) => emit(AppDirectionChanged()));
   }
 }

@@ -37,12 +37,16 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          TextButton(
-            onPressed: () => navigateAndFinish(context,  const LoginScreen()),
-            child: const Text(
-              'SKIP',
-            ),
+          defaultTextButton(
+            'Skip',
+            () => navigateAndFinish(context, LoginScreen()),
           ),
+          // TextButton(
+          //   onPressed: () => navigateAndFinish(context, LoginScreen()),
+          //   child: const Text(
+          //     'SKIP',
+          //   ),
+          // ),
         ],
       ),
       body: Padding(
@@ -79,7 +83,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 FloatingActionButton(
                   onPressed: () {
                     if (isLast) {
-                      navigateAndFinish(context, const LoginScreen());
+                      navigateAndFinish(context, LoginScreen());
                     } else {
                       pageController.nextPage(
                         duration: const Duration(milliseconds: 750),
