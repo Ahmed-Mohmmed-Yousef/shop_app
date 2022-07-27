@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void navigateTo(context, widget) => Navigator.push(
       context,
@@ -87,5 +88,21 @@ Widget defaultTextButton(String title, void Function() onPressed) {
   return TextButton(
     onPressed: onPressed,
     child: Text(title.toUpperCase()),
+  );
+}
+
+void showToast({
+  required String text,
+  ToastGravity? gravity,
+  Color? backgroundColor,
+}) {
+  Fluttertoast.showToast(
+    msg: text,
+    toastLength: Toast.LENGTH_LONG,
+    gravity: gravity ?? ToastGravity.BOTTOM,
+    timeInSecForIosWeb: 5,
+    backgroundColor: backgroundColor ?? Colors.blue,
+    textColor: Colors.white,
+    fontSize: 16,
   );
 }

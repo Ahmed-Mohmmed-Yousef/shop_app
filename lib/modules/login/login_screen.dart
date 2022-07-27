@@ -16,7 +16,17 @@ class LoginScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state is LoginSuccessState) {
+            if (state.model.status) {
+              showToast(text: state.model.message, backgroundColor: Colors.green);
+            } else {
+              showToast(text: state.model.message, backgroundColor: Colors.red);
+            }
+          } else if (state is LoginErrorState) {
+            showToast(text: state.error, backgroundColor: Colors.red);
+          }
+        },
         builder: (context, state) {
           LoginCubit cubit = LoginCubit.get(context);
           return Scaffold(
