@@ -1,6 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shop_app/layouts/shop_layiut.dart';
 import 'package:shop_app/modules/login/cubit/login_cubit.dart';
 import 'package:shop_app/modules/register/register_screen.dart';
 import 'package:shop_app/shared/components/components.dart';
@@ -17,14 +18,18 @@ class LoginScreen extends StatelessWidget {
       create: (context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
+          LoginCubit cubit = LoginCubit.get(context);
           if (state is LoginSuccessState) {
             if (state.model.status) {
-              showToast(text: state.model.message, backgroundColor: Colors.green);
+              showToast(text: state.model.message, status: ToastStatus.SUCCESS);
+              cubit.saveUserToken(state.model.data!.token);
             } else {
-              showToast(text: state.model.message, backgroundColor: Colors.red);
+              showToast(text: state.model.message,  status: ToastStatus.ERROR);
             }
           } else if (state is LoginErrorState) {
-            showToast(text: state.error, backgroundColor: Colors.red);
+            showToast(text: state.error, status: ToastStatus.ERROR);
+          } else if (state is LoginSaveTokenState) {
+            navigateAndFinish(context, const ShopLayout());
           }
         },
         builder: (context, state) {
@@ -37,7 +42,7 @@ class LoginScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(20.0),
                   child: Form(
                     key: formKey,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    // autovalidateMode: AutovalidateMode.onUserInteraction,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

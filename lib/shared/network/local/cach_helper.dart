@@ -1,9 +1,11 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CachKey {
+  static const userToken = 'user_token';
   static const apiLang = 'api_lang';
-  static const isLightMod = 'isLightMod';
+  static const isDarktMod = 'isDarktMod';
   static const isRtl = 'isRtl';
+  static const isOnBoard = 'isOnBoard';
 }
 
 class CachHelper {
@@ -19,7 +21,7 @@ class CachHelper {
   }
 
   static bool getBool({required String key}) {
-    return sharedPreferences.getBool(key) ?? true;
+    return sharedPreferences.getBool(key) ?? false;
   }
 
   static Future<bool> putString({required String key, required String value}) async {

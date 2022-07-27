@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/modules/login/login_screen.dart';
 import 'package:shop_app/shared/components/components.dart';
+import 'package:shop_app/shared/network/local/cach_helper.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class BoardingModel {
@@ -39,14 +40,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         actions: [
           defaultTextButton(
             'Skip',
-            () => navigateAndFinish(context, LoginScreen()),
+            () => endOnBoarding(context),
           ),
-          // TextButton(
-          //   onPressed: () => navigateAndFinish(context, LoginScreen()),
-          //   child: const Text(
-          //     'SKIP',
-          //   ),
-          // ),
         ],
       ),
       body: Padding(
@@ -83,7 +78,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 FloatingActionButton(
                   onPressed: () {
                     if (isLast) {
-                      navigateAndFinish(context, LoginScreen());
+                      endOnBoarding(context);
                     } else {
                       pageController.nextPage(
                         duration: const Duration(milliseconds: 750),
@@ -124,6 +119,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         ),
       ],
     );
+  }
+
+  void endOnBoarding(BuildContext context) {
+    CachHelper.putBool(key: CachKey.isOnBoard, value: true).then((value) {
+      navigateAndFinish(context, LoginScreen());
+    });
   }
 }
 

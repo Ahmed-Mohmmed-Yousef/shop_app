@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shop_app/shared/styles/themes.dart';
 
 void navigateTo(context, widget) => Navigator.push(
       context,
@@ -91,17 +92,33 @@ Widget defaultTextButton(String title, void Function() onPressed) {
   );
 }
 
+enum ToastStatus {SUCCESS, ERROR, WARNING, INFO}
+
+Color chooseToastColor(ToastStatus status) {
+  switch (status) {
+    
+    case ToastStatus.SUCCESS:
+      return Colors.green;
+    case ToastStatus.ERROR:
+      return Colors.red;
+    case ToastStatus.WARNING:
+      return Colors.amber;
+    case ToastStatus.INFO:
+      return Themes.primaryColor;
+  }
+}
+
 void showToast({
   required String text,
   ToastGravity? gravity,
-  Color? backgroundColor,
+  ToastStatus? status,
 }) {
   Fluttertoast.showToast(
     msg: text,
     toastLength: Toast.LENGTH_LONG,
     gravity: gravity ?? ToastGravity.BOTTOM,
     timeInSecForIosWeb: 5,
-    backgroundColor: backgroundColor ?? Colors.blue,
+    backgroundColor: chooseToastColor(status ?? ToastStatus.INFO),
     textColor: Colors.white,
     fontSize: 16,
   );

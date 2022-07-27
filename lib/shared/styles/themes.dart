@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class Themes {
+  static MaterialColor primaryColor = Colors.blue;
   static ThemeData lightTheme = ThemeData(
               secondaryHeaderColor: Colors.grey,
-              primarySwatch: Colors.blue,
+              primarySwatch: primaryColor,
               // floatingActionButtonTheme: const FloatingActionButtonThemeData(
               //   backgroundColor: Colors.deepOrange,
               //   elevation: 0.0,
@@ -45,7 +46,7 @@ class Themes {
 
   static ThemeData darkTheme = ThemeData(
               secondaryHeaderColor: Colors.grey,
-              primarySwatch: Colors.blue,
+              primarySwatch: primaryColor,
               // floatingActionButtonTheme: const FloatingActionButtonThemeData(
               //   backgroundColor: Colors.deepOrange,
               //   elevation: 0.0,

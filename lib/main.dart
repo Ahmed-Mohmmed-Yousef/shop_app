@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shop_app/layouts/shop_layiut.dart';
+import 'package:shop_app/modules/login/login_screen.dart';
 import 'package:shop_app/modules/onboarding/onboarding_screen.dart';
 import 'package:shop_app/shared/bloc_observer.dart';
 import 'package:shop_app/shared/cubits/app/app_cubit.dart';
@@ -15,12 +17,14 @@ void main() async {
     () {},
     blocObserver: MyBlocObserver(),
   );
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+  MyApp({Key? key}) : super(key: key);
+  final bool isOnBoarding = CachHelper.getBool(key: CachKey.isOnBoard);
+  final bool isLogin =
+      (CachHelper.getString(key: CachKey.userToken) ?? "").isNotEmpty;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -35,14 +39,27 @@ class MyApp extends StatelessWidget {
             title: 'Flutter Demo',
             theme: Themes.lightTheme,
             darkTheme: Themes.darkTheme,
-            themeMode: cubit.isLightMode ? ThemeMode.light : ThemeMode.dark,
+            themeMode: cubit.isDarktMod ? ThemeMode.dark : ThemeMode.light,
             home: Directionality(
-              textDirection: !cubit.isRtl ? TextDirection.rtl : TextDirection.ltr,
-              child: OnBoardingScreen(),
+              textDirection:
+                  cubit.isRtl ? TextDirection.rtl : TextDirection.ltr,
+              child: homeWidget(),
             ),
           );
         },
       ),
     );
+  }
+
+  Widget homeWidget() {
+    if (isOnBoarding) {
+      if (isLogin) {
+        return const ShopLayout();
+      } else {
+        return LoginScreen();
+      }
+    } else {
+      return OnBoardingScreen();
+    }
   }
 }
