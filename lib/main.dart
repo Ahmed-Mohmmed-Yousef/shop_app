@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shop_app/modules/onboarding/onboarding_screen.dart';
 import 'package:shop_app/shared/bloc_observer.dart';
 import 'package:shop_app/shared/cubits/app/app_cubit.dart';
 import 'package:shop_app/shared/network/local/cach_helper.dart';
@@ -30,13 +31,14 @@ class MyApp extends StatelessWidget {
         builder: (context, state) {
           AppCubit cubit = AppCubit.get(context);
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
             theme: Themes.lightTheme,
             darkTheme: Themes.darkTheme,
             themeMode: cubit.isLightMode ? ThemeMode.light : ThemeMode.dark,
             home: Directionality(
-              textDirection: cubit.isRtl ? TextDirection.rtl : TextDirection.ltr,
-              child: Container(),
+              textDirection: !cubit.isRtl ? TextDirection.rtl : TextDirection.ltr,
+              child: OnBoardingScreen(),
             ),
           );
         },

@@ -40,6 +40,7 @@ class Themes {
                   color: Colors.black,
                 ),
               ),
+              fontFamily: 'Jannah',
             );
 
   static ThemeData darkTheme = ThemeData(
@@ -80,6 +81,7 @@ class Themes {
                   color: Colors.white,
                 ),
               ),
+              fontFamily: 'Jannah',
             );
 
 }
