@@ -1,12 +1,11 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:shop_app/models/login_model.dart';
+import 'package:shop_app/modules/starter/login/cubit/login_state.dart';
 import 'package:shop_app/shared/network/local/cach_helper.dart';
 import 'package:shop_app/shared/network/remote/user_remote_helper.dart';
 
-part 'login_state.dart';
+
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitialState());

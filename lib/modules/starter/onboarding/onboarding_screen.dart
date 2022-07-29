@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/modules/login/login_screen.dart';
+import 'package:shop_app/modules/starter/login/login_screen.dart';
 import 'package:shop_app/shared/components/components.dart';
 import 'package:shop_app/shared/network/local/cach_helper.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';

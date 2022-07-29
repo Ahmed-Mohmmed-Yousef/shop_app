@@ -1,9 +1,10 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shop_app/layouts/shop_layiut.dart';
-import 'package:shop_app/modules/login/cubit/login_cubit.dart';
-import 'package:shop_app/modules/register/register_screen.dart';
+import 'package:shop_app/layouts/shop_layout.dart';
+import 'package:shop_app/modules/starter/login/cubit/login_cubit.dart';
+import 'package:shop_app/modules/starter/login/cubit/login_state.dart';
+import 'package:shop_app/modules/starter/register/register_screen.dart';
 import 'package:shop_app/shared/components/components.dart';
 
 class LoginScreen extends StatelessWidget {

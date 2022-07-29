@@ -1,5 +1,13 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shop_app/modules/Products/Products_screen.dart';
+import 'package:shop_app/modules/categories/categories_screen.dart';
+import 'package:shop_app/modules/favorites/favorite_screen.dart';
+import 'package:shop_app/modules/search/search_screen.dart';
+import 'package:shop_app/modules/settings/settings_screen.dart';
+
 import 'package:shop_app/shared/styles/themes.dart';
 
 void navigateTo(context, widget) => Navigator.push(
@@ -122,4 +130,30 @@ void showToast({
     textColor: Colors.white,
     fontSize: 16,
   );
+}
+
+class BottomBarItemInfo {
+  IconData icon;
+  String label;
+  BottomBarItemInfo({
+    required this.icon,
+    required this.label,
+  });
+}
+
+BottomBarItemInfo getBottomNavBarDate(Widget widget) {
+  switch (widget.runtimeType) {
+    case CategoriesScreen:
+    return BottomBarItemInfo(icon: Icons.apps, label: 'Category');
+    case FavoriteScreen:
+    return BottomBarItemInfo(icon: Icons.favorite, label: 'Favoriate');
+    case ProductsScreen:
+    return BottomBarItemInfo(icon: Icons.home, label: 'Home');
+    case SearchScreen:
+    return BottomBarItemInfo(icon: Icons.search_off_outlined, label: 'Search');
+    case SettingsScreen:
+    return BottomBarItemInfo(icon: Icons.settings, label: 'Settings');
+    default:
+    return BottomBarItemInfo(icon: Icons.circle, label: 'Nothing');
+  }
 }

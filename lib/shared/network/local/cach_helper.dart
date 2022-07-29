@@ -10,6 +10,10 @@ class CachKey {
 
 class CachHelper {
 
+  static String getToken() {
+    return sharedPreferences.getString(CachKey.userToken) ?? "";
+  }
+
   static late SharedPreferences sharedPreferences;
 
   static init() async {

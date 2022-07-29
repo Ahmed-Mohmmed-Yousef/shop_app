@@ -1,4 +1,7 @@
-part of 'login_cubit.dart';
+import 'package:flutter/material.dart';
+import 'package:shop_app/models/login_model.dart';
+
+// part of 'login_cubit.dart';
 
 @immutable
 abstract class LoginState {}

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class Themes {
-  static MaterialColor primaryColor = Colors.blue;
+  static const primaryColor = Colors.blue;
   static ThemeData lightTheme = ThemeData(
               secondaryHeaderColor: Colors.grey,
               primarySwatch: primaryColor,
@@ -30,7 +30,7 @@ class Themes {
               bottomNavigationBarTheme: const BottomNavigationBarThemeData(
                 type: BottomNavigationBarType.fixed,
                 elevation: 20.0,
-                selectedItemColor: Colors.deepOrange,
+                selectedItemColor: primaryColor,
                 unselectedItemColor: Colors.grey,
                 backgroundColor: Colors.white,
               ),
@@ -71,7 +71,7 @@ class Themes {
               bottomNavigationBarTheme: BottomNavigationBarThemeData(
                 type: BottomNavigationBarType.fixed,
                 elevation: 20.0,
-                selectedItemColor: Colors.deepOrange,
+                selectedItemColor: primaryColor,
                 unselectedItemColor: Colors.grey,
                 backgroundColor: HexColor('333739'),
               ),

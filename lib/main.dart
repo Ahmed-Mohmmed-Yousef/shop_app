@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shop_app/layouts/shop_layiut.dart';
-import 'package:shop_app/modules/login/login_screen.dart';
-import 'package:shop_app/modules/onboarding/onboarding_screen.dart';
+import 'package:shop_app/layouts/shop_layout.dart';
+import 'package:shop_app/modules/starter/login/login_screen.dart';
+import 'package:shop_app/modules/starter/onboarding/onboarding_screen.dart';
+
 import 'package:shop_app/shared/bloc_observer.dart';
 import 'package:shop_app/shared/cubits/app/app_cubit.dart';
 import 'package:shop_app/shared/network/local/cach_helper.dart';

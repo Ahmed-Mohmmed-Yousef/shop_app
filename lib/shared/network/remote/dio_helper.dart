@@ -1,32 +1,36 @@
 import 'package:dio/dio.dart';
 import 'package:shop_app/shared/network/local/cach_helper.dart';
 
-
-
 class DioHelper {
   static late Dio dio;
 
   static init() {
-    dio = Dio(BaseOptions(
-      baseUrl: 'https://student.valuxapps.com/api/',
-      receiveDataWhenStatusError: true,
-      headers: {
-        'Content-Type': 'application/json',
-        'lang': 'ar',
-      },
-    ));
+    dio = Dio(
+      BaseOptions(
+        baseUrl: 'https://student.valuxapps.com/api/',
+        receiveDataWhenStatusError: true,
+      ),
+    );
   }
 
   static Future<Response> getData({
     required String url,
-    required Map<String, dynamic> query,
-    String? authorization,
-  }) async {
-    dio.options.headers = {
-        'Authorization' : authorization,
-        'lang': CachHelper.getString(key: 'api_lang') ?? 'ar',
-      };
-    return await dio.get(url, queryParameters: query);
+    Map<String, dynamic>? query,
+    String lang = 'en',
+    String? token,
+  }) async
+  {
+    dio.options.headers =
+    {
+      'lang':lang,
+      'Authorization': token??'',
+      'Content-Type': 'application/json',
+    };
+
+    return await dio.get(
+      url,
+      queryParameters: query,
+    );
   }
 
   static Future<Response> postData({
@@ -36,9 +40,10 @@ class DioHelper {
     Map<String, dynamic>? query,
   }) async {
     dio.options.headers = {
-        'Authorization' : authorization,
-        'lang': CachHelper.getString(key: 'api_lang') ?? 'ar',
-      };
+      'Content-Type': 'application/json',
+      'Authorization': authorization ?? '',
+      'lang': CachHelper.getString(key: 'api_lang') ?? 'en',
+    };
     return await dio.post(
       url,
       queryParameters: query,

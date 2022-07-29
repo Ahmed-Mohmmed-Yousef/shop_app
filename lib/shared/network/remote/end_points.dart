@@ -6,3 +6,6 @@ class UserEndPoint {
   static String updateProfile = 'update-profile';
 }
 
+class HomeEndPoint {
+  static String home = 'home';
+}
