@@ -13,3 +13,14 @@ class ShopErrorState extends ShopState {
 
   ShopErrorState(this.error);
 }
+
+class ShopChangeFavoriteState extends ShopState {}
+class ShopSuccessChangeFavoriteState extends ShopState {
+  ChangeFavoriateResponseModel model;
+  ShopSuccessChangeFavoriteState(this.model);
+}
+class ShopErrorChangeFavoriteState extends ShopState {
+  final String error;
+
+  ShopErrorChangeFavoriteState(this.error);
+}

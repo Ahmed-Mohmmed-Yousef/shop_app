@@ -9,3 +9,13 @@ class UserEndPoint {
 class HomeEndPoint {
   static String home = 'home';
 }
+
+
+class CategoryEndPoint {
+  static String categories = 'categories';
+}
+
+class FavoriteEndPoint {
+  static String getFavorites = 'favorites';
+  static String addOrRemoveFavorites = 'favorites';
+}

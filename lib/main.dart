@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           AppCubit cubit = AppCubit.get(context);
+          print(CachHelper.getToken());
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',

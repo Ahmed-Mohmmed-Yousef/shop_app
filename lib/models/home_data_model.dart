@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 
 class HomeDataResponseModel {
   bool status;
@@ -129,8 +128,8 @@ class Product {
       'name': name,
       'description': description,
       'images': images,
-      'inFavorites': inFavorites,
-      'inCart': inCart,
+      'in_favorites': inFavorites,
+      'in_cart': inCart,
     };
   }
 
@@ -139,13 +138,13 @@ class Product {
       id: map['id']?.toInt() ?? 0,
       price: map['price']?.toDouble() ?? 0.0,
       oldPrice: map['oldPrice']?.toDouble() ?? 0.0,
-      discount: map['discount']?.toInt() ?? 0,
+      discount: map['discount']?.toInt() ?? 0.0,
       image: map['image'] ?? '',
       name: map['name'] ?? '',
       description: map['description'] ?? '',
       images: List<String>.from(map['images']),
-      inFavorites: map['inFavorites'] ?? false,
-      inCart: map['inCart'] ?? false,
+      inFavorites: map['in_favorites'] ?? false,
+      inCart: map['in_cart'] ?? false,
     );
   }
 
