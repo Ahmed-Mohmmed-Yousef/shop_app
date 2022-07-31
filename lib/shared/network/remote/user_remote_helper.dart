@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:shop_app/shared/network/local/cach_helper.dart';
 import 'package:shop_app/shared/network/remote/dio_helper.dart';
 import 'package:shop_app/shared/network/remote/end_points.dart';
 
@@ -34,13 +35,12 @@ class UserRemoteHelper {
     );
   }
 
-  static Future<Response> profile(String authorization) async {
-    return await DioHelper.postData(
-      url: UserEndPoint.logout,
-      data: {
-        'fcm_token': authorization,
-      },
+  static Future<Response> getProfile() async {
+    return await DioHelper.getData(
+      url: UserEndPoint.profile,
+      token: CachHelper.getToken(),
     );
   }
+
 
 }
